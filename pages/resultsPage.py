@@ -2,7 +2,8 @@ from pages.basePage import BasePage
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support.ui import Select
+from selenium.webdriver.support.select import Select
+#todo Q: ^^^ for dropdown?
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 
@@ -12,7 +13,6 @@ class ResultPage():
         #super().__init__(self, browser)
 
     #Sort dropbox web element
-
     searchSort = (By.XPATH, "//div[contains(@class, 'search-sort')]")
 
     #list of web elements (24 per page)
