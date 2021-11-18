@@ -2,28 +2,30 @@ from pages.basePage import BasePage
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 
-class ResultPage(BasePage):
+class ResultPage():
     def __init__(self, browser):
-        super().__init__(self, browser=browser)
+        self.browser = browser
+        #super().__init__(self, browser)
 
-#Sort dropbox web element
+    #Sort dropbox web element
 
-    searchSort = (By.xpath("//div[contains(@class, 'search-sort')]"))
+    searchSort = (By.XPATH, "//div[contains(@class, 'search-sort')]")
 
-#list of web elements (24 per page)
-    itemPrices = (By.xpath("//img[contains(@alt, 'Bells')]"))
+    #list of web elements (24 per page)
+    itemPrices = (By.XPATH, "//img[contains(@alt, 'Bells')]")
 
-#Sort method
+    #Sort method
     def sortBy(self, option):
         dropbox = self.browser.find_element(*self.searchSort)
         #selenium command to click the sort dropbox
         dropdown = self.browser.find_element(*self.searchSort)
         dropdown.select_by_visible_text(option)
 
-#check sorted low to high
+    #check sorted low to high
     def checkLowToHigh(self):
         pricesList = self.browser.find_element(*self.itemPrices)
         #for loop checking item prices

@@ -9,13 +9,14 @@ def test_website_search(browser):
 
     homePage.load()
     #assert page is loaded with a boolean from homePage object
-    pass
+    assert homePage.checkSearchButton()
+
     #search "zen" in the website
     homePage.inputSearchText(searchPhrase)
 
     #order low to high
+    #TODO AttributeError: 'WebElement' object has no attribute 'select_by_visible_text'
     resultsPage.sortBy("Price: Low to High")
 
     #assert low to high with a method from the resultsPage
     assert resultsPage.checkLowToHigh()
-    
