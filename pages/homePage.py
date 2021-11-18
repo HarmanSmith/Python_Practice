@@ -12,15 +12,16 @@ class HomePage(BasePage):
 
     url = "https://nookazon.com/"
 
-    searchInput = browser.find_element(By.xpath("//input[contains(@placeholder, 'Search items')]"))
+    #using self.browser.find_element ??
+    searchInput = (By.xpath("//input[contains(@placeholder, 'Search items')]"))
 
-    searchButton = browser.find_element(By.xpath("//button[contains(@type, 'submit')]"))
+    searchButton = (By.xpath("//button[contains(@type, 'submit')]"))
 
 
     def checkSearchButton(self):
         searchButton = self.browser.find_element(*self.searchButton)
-        #value = searchButton.element_to_be_clickable
-        #return value
+        #value = searchButton.element_to_be_clickable?
+        #return value?
         pass
 
     def inputSearchText(self, text):
