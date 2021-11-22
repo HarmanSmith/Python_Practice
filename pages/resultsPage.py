@@ -3,7 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.select import Select
-#todo Q: ^^^ for dropdown?
+#Q: ^^^ for dropdown?
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 
@@ -22,8 +22,12 @@ class ResultPage():
     def sortBy(self, option):
         dropbox = self.browser.find_element(*self.searchSort)
         #selenium command to click the sort dropbox
-        dropdown = self.browser.find_element(*self.searchSort)
+        #Click first on dropdown then find xpath for select?
+        #todo: Q website does not use <select> element for dropdown, how to interact?
+        dropdown = Select(self.browser.find_element(*self.searchSort))
         dropdown.select_by_visible_text(option)
+        #s3 = Select(self.browser.find_element_by_xpath("//div[contains(@class, 'search-sort')]"))
+        #s3.select_by_visible_text(option)
 
     #check sorted low to high
     def checkLowToHigh(self):
