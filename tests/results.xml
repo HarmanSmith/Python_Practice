@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="19.260" timestamp="2021-11-29T11:08:55.714419" hostname="UY-IT02453"><testcase classname="tests.test_search" name="test_website_search" time="19.158"><failure message="selenium.common.exceptions.UnexpectedTagNameException: Message: Select only works on &lt;select&gt; elements, not on &lt;div&gt;">browser = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session="fe157217c514da2938701c77698149b3")&gt;
+
+    def test_website_search(browser):
+        homePage = HomePage(browser)
+        resultsPage = ResultPage(browser)
+        searchPhrase = "zen"
+    
+        homePage.load()
+        #assert page is loaded with a boolean from homePage object
+        assert homePage.checkSearchButton() == True
+        #assert correct?
+    
+        #search "zen" in the website
+        homePage.inputSearchText(searchPhrase)
+    
+        #---Works up to this point---
+        #order low to high
+        #TODO Q: AttributeError: 'WebElement' object has no attribute 'select_by_visible_text'
+        # Q: "Select" only works on &lt;select&gt; elements, not on &lt;div&gt;
+&gt;       resultsPage.sortBy("Price: Low to High")
+
+test_search.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../pages/resultsPage.py:27: in sortBy
+    dropdown = Select(self.browser.find_element(*self.searchSort))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;selenium.webdriver.support.select.Select object at 0x7ff1b7c3b130&gt;
+webelement = &lt;selenium.webdriver.remote.webelement.WebElement (session="fe157217c514da2938701c77698149b3", element="36064062-e597-409e-8f6f-3f9a10395543")&gt;
+
+    def __init__(self, webelement):
+        """
+        Constructor. A check is made that the given element is, indeed, a SELECT tag. If it is not,
+        then an UnexpectedTagNameException is thrown.
+    
+        :Args:
+         - webelement - element SELECT element to wrap
+    
+        Example:
+            from selenium.webdriver.support.ui import Select \n
+            Select(driver.find_element(By.TAG_NAME, "select")).select_by_index(2)
+        """
+        if webelement.tag_name.lower() != "select":
+&gt;           raise UnexpectedTagNameException(
+                "Select only works on &lt;select&gt; elements, not on &lt;%s&gt;" %
+                webelement.tag_name)
+E           selenium.common.exceptions.UnexpectedTagNameException: Message: Select only works on &lt;select&gt; elements, not on &lt;div&gt;
+
+../venv/lib/python3.9/site-packages/selenium/webdriver/support/select.py:37: UnexpectedTagNameException</failure></testcase></testsuite></testsuites>

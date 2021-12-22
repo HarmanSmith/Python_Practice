@@ -2,7 +2,6 @@ import json
 import pytest
 import selenium.webdriver
 
-
 @pytest.fixture
 def config(scope='session'):
     # Read the file

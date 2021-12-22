@@ -13,7 +13,6 @@ class HomePage():
         self.browser = browser
     #super().__init__(self, browser)
 
-
     def load(self):
         self.browser.get(self.url)
 
